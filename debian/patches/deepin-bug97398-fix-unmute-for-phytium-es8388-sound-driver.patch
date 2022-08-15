@@ -1,0 +1,32 @@
+Description: fix: unmute for phytium es8388 sound driver
+ some control in es8388 sound driver is new for alsa,
+ which will default mute for first use.
+ add those control in configure file for unmute by default.
+ Log: 飞腾推出了新的声卡驱动es8388,
+ 不过有一些控制条目是alsa默认配置中没有的,
+ 这些新控制条目如果不配置就会默认是静音的,
+ 如果装完系统后还要用户去配置alsamixer会导致用户体验不好,
+ 这里在alsa中增加了一些配置,让这些新控制条目不要静音.
+ 条目包括如下两个:
+ * Left Mixer Playback Switch
+ * Right Mixer Playback Switch
+
+Origin: https://gerrit.uniontech.com/plugins/gitiles/base/alsa-utils/+/454c47acfc82cea9b51ac19fdcdf646d63104846
+Bug: https://pms.uniontech.com/zentao/bug-view-97398.html
+Last-Update: 2022-05-19
+
+--- alsa-utils-1.2.6.orig/alsactl/init/default
++++ alsa-utils-1.2.6/alsactl/init/default
+@@ -30,6 +30,12 @@ CTL{name}="Master Playback Switch",CTL{d
+   CTL{values}="on"
+ 
+ CTL{reset}="mixer"
++CTL{name}="Left Mixer Playback Switch",CTL{do_search}=="1", \
++  CTL{values}="on"
++CTL{name}="Right Mixer Playback Switch",CTL{do_search}=="1", \
++  CTL{values}="on"
++
++CTL{reset}="mixer"
+ CTL{name}="Master Front Playback Volume",CTL{do_search}=="1", \
+   ENV{has_pmaster_vol}:="true", \
+   CTL{write}!="$env{pvolume}",CTL{values}="$env{ppercent}"

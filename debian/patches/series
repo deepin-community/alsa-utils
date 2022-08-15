@@ -1,0 +1,10 @@
+alsa-info_call_home.patch
+alsa-info_manpage.patch
+alsactl_home.patch
+alsactl_xdg_runtime.patch
+udev_test_alsactl.patch
+spellfixes.patch
+systemd_Documentation_key.patch
+Don-t-run-both-systemd-services-in-paralell.patch
+deepin-bug97398-fix-unmute-for-phytium-es8388-sound-driver.patch
+deepin-set-x100-default-volume.patch
