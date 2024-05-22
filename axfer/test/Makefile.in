@@ -95,9 +95,11 @@ am__aclocal_m4_deps = $(top_srcdir)/m4/gettext.m4 \
 	$(top_srcdir)/m4/host-cpu-c-abi.m4 $(top_srcdir)/m4/iconv.m4 \
 	$(top_srcdir)/m4/intlmacosx.m4 $(top_srcdir)/m4/lib-ld.m4 \
 	$(top_srcdir)/m4/lib-link.m4 $(top_srcdir)/m4/lib-prefix.m4 \
-	$(top_srcdir)/m4/nls.m4 $(top_srcdir)/m4/po.m4 \
-	$(top_srcdir)/m4/progtest.m4 $(top_srcdir)/acinclude.m4 \
-	$(top_srcdir)/configure.ac
+	$(top_srcdir)/m4/libtool.m4 $(top_srcdir)/m4/ltoptions.m4 \
+	$(top_srcdir)/m4/ltsugar.m4 $(top_srcdir)/m4/ltversion.m4 \
+	$(top_srcdir)/m4/lt~obsolete.m4 $(top_srcdir)/m4/nls.m4 \
+	$(top_srcdir)/m4/po.m4 $(top_srcdir)/m4/progtest.m4 \
+	$(top_srcdir)/acinclude.m4 $(top_srcdir)/configure.ac
 am__configure_deps = $(am__aclocal_m4_deps) $(CONFIGURE_DEPENDENCIES) \
 	$(ACLOCAL_M4)
 DIST_COMMON = $(srcdir)/Makefile.am $(am__DIST_COMMON)
@@ -105,17 +107,22 @@ mkinstalldirs = $(install_sh) -d
 CONFIG_HEADER = $(top_builddir)/include/aconfig.h
 CONFIG_CLEAN_FILES =
 CONFIG_CLEAN_VPATH_FILES =
-am_container_test_OBJECTS = container.$(OBJEXT) \
-	container-riff-wave.$(OBJEXT) container-au.$(OBJEXT) \
-	container-voc.$(OBJEXT) container-raw.$(OBJEXT) \
+am__dirstamp = $(am__leading_dot)dirstamp
+am_container_test_OBJECTS = ../container.$(OBJEXT) \
+	../container-riff-wave.$(OBJEXT) ../container-au.$(OBJEXT) \
+	../container-voc.$(OBJEXT) ../container-raw.$(OBJEXT) \
 	generator.$(OBJEXT) container-test.$(OBJEXT)
 container_test_OBJECTS = $(am_container_test_OBJECTS)
 container_test_LDADD = $(LDADD)
-am_mapper_test_OBJECTS = container.$(OBJEXT) \
-	container-riff-wave.$(OBJEXT) container-au.$(OBJEXT) \
-	container-voc.$(OBJEXT) container-raw.$(OBJEXT) \
-	mapper.$(OBJEXT) mapper-single.$(OBJEXT) \
-	mapper-multiple.$(OBJEXT) generator.$(OBJEXT) \
+AM_V_lt = $(am__v_lt_@AM_V@)
+am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
+am__v_lt_0 = --silent
+am__v_lt_1 = 
+am_mapper_test_OBJECTS = ../container.$(OBJEXT) \
+	../container-riff-wave.$(OBJEXT) ../container-au.$(OBJEXT) \
+	../container-voc.$(OBJEXT) ../container-raw.$(OBJEXT) \
+	../mapper.$(OBJEXT) ../mapper-single.$(OBJEXT) \
+	../mapper-multiple.$(OBJEXT) generator.$(OBJEXT) \
 	mapper-test.$(OBJEXT)
 mapper_test_OBJECTS = $(am_mapper_test_OBJECTS)
 mapper_test_LDADD = $(LDADD)
@@ -134,26 +141,28 @@ am__v_at_1 =
 DEFAULT_INCLUDES = -I.@am__isrc@ -I$(top_builddir)/include
 depcomp = $(SHELL) $(top_srcdir)/depcomp
 am__maybe_remake_depfiles = depfiles
-am__depfiles_remade = ./$(DEPDIR)/container-au.Po \
-	./$(DEPDIR)/container-raw.Po \
-	./$(DEPDIR)/container-riff-wave.Po \
-	./$(DEPDIR)/container-test.Po ./$(DEPDIR)/container-voc.Po \
-	./$(DEPDIR)/container.Po ./$(DEPDIR)/generator.Po \
-	./$(DEPDIR)/mapper-multiple.Po ./$(DEPDIR)/mapper-single.Po \
-	./$(DEPDIR)/mapper-test.Po ./$(DEPDIR)/mapper.Po
+am__depfiles_remade = ../$(DEPDIR)/container-au.Po \
+	../$(DEPDIR)/container-raw.Po \
+	../$(DEPDIR)/container-riff-wave.Po \
+	../$(DEPDIR)/container-voc.Po ../$(DEPDIR)/container.Po \
+	../$(DEPDIR)/mapper-multiple.Po ../$(DEPDIR)/mapper-single.Po \
+	../$(DEPDIR)/mapper.Po ./$(DEPDIR)/container-test.Po \
+	./$(DEPDIR)/generator.Po ./$(DEPDIR)/mapper-test.Po
 am__mv = mv -f
-AM_V_lt = $(am__v_lt_@AM_V@)
-am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
-am__v_lt_0 = --silent
-am__v_lt_1 = 
 COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \
 	$(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
+LTCOMPILE = $(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) \
+	$(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) \
+	$(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) \
+	$(AM_CFLAGS) $(CFLAGS)
 AM_V_CC = $(am__v_CC_@AM_V@)
 am__v_CC_ = $(am__v_CC_@AM_DEFAULT_V@)
 am__v_CC_0 = @echo "  CC      " $@;
 am__v_CC_1 = 
 CCLD = $(CC)
-LINK = $(CCLD) $(AM_CFLAGS) $(CFLAGS) $(AM_LDFLAGS) $(LDFLAGS) -o $@
+LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) \
+	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) \
+	$(AM_LDFLAGS) $(LDFLAGS) -o $@
 AM_V_CCLD = $(am__v_CCLD_@AM_V@)
 am__v_CCLD_ = $(am__v_CCLD_@AM_DEFAULT_V@)
 am__v_CCLD_0 = @echo "  CCLD    " $@;
@@ -397,8 +406,10 @@ ALSACTL_PIDFILE_DIR = @ALSACTL_PIDFILE_DIR@
 ALSA_CFLAGS = @ALSA_CFLAGS@
 ALSA_LIBS = @ALSA_LIBS@
 ALSA_TOPOLOGY_LIBS = @ALSA_TOPOLOGY_LIBS@
+ALSA_TOPOLOGY_PLUGIN_DIR = @ALSA_TOPOLOGY_PLUGIN_DIR@
 AMTAR = @AMTAR@
 AM_DEFAULT_VERBOSITY = @AM_DEFAULT_VERBOSITY@
+AR = @AR@
 ASOUND_LOCK_DIR = @ASOUND_LOCK_DIR@
 ASOUND_STATE_DIR = @ASOUND_STATE_DIR@
 AUTOCONF = @AUTOCONF@
@@ -416,6 +427,9 @@ CURSES_CFLAGS = @CURSES_CFLAGS@
 CYGPATH_W = @CYGPATH_W@
 DEFS = @DEFS@
 DEPDIR = @DEPDIR@
+DLLTOOL = @DLLTOOL@
+DSYMUTIL = @DSYMUTIL@
+DUMPBIN = @DUMPBIN@
 ECHO_C = @ECHO_C@
 ECHO_N = @ECHO_N@
 ECHO_T = @ECHO_T@
@@ -424,6 +438,7 @@ EXEEXT = @EXEEXT@
 FFTW_CFLAGS = @FFTW_CFLAGS@
 FFTW_INC = @FFTW_INC@
 FFTW_LIB = @FFTW_LIB@
+FGREP = @FGREP@
 GETTEXT_MACRO_VERSION = @GETTEXT_MACRO_VERSION@
 GMSGFMT = @GMSGFMT@
 GMSGFMT_015 = @GMSGFMT_015@
@@ -435,18 +450,23 @@ INSTALL_SCRIPT = @INSTALL_SCRIPT@
 INSTALL_STRIP_PROGRAM = @INSTALL_STRIP_PROGRAM@
 INTLLIBS = @INTLLIBS@
 INTL_MACOSX_LIBS = @INTL_MACOSX_LIBS@
+LD = @LD@
 LDFLAGS = @LDFLAGS@
 LIBICONV = @LIBICONV@
 LIBINTL = @LIBINTL@
 LIBOBJS = @LIBOBJS@
 LIBRT = @LIBRT@
 LIBS = @LIBS@
+LIBTOOL = @LIBTOOL@
+LIPO = @LIPO@
 LN_S = @LN_S@
 LTLIBICONV = @LTLIBICONV@
 LTLIBINTL = @LTLIBINTL@
 LTLIBOBJS = @LTLIBOBJS@
+LT_SYS_LIBRARY_PATH = @LT_SYS_LIBRARY_PATH@
 MAINT = @MAINT@
 MAKEINFO = @MAKEINFO@
+MANIFEST_TOOL = @MANIFEST_TOOL@
 MKDIR_P = @MKDIR_P@
 MSGFMT = @MSGFMT@
 MSGMERGE = @MSGMERGE@
@@ -455,7 +475,12 @@ NCURSESW_CFLAGS = @NCURSESW_CFLAGS@
 NCURSESW_LIBS = @NCURSESW_LIBS@
 NCURSES_CFLAGS = @NCURSES_CFLAGS@
 NCURSES_LIBS = @NCURSES_LIBS@
+NM = @NM@
+NMEDIT = @NMEDIT@
+OBJDUMP = @OBJDUMP@
 OBJEXT = @OBJEXT@
+OTOOL = @OTOOL@
+OTOOL64 = @OTOOL64@
 PACKAGE = @PACKAGE@
 PACKAGE_BUGREPORT = @PACKAGE_BUGREPORT@
 PACKAGE_NAME = @PACKAGE_NAME@
@@ -468,6 +493,7 @@ PKG_CONFIG = @PKG_CONFIG@
 PKG_CONFIG_LIBDIR = @PKG_CONFIG_LIBDIR@
 PKG_CONFIG_PATH = @PKG_CONFIG_PATH@
 POSUB = @POSUB@
+RANLIB = @RANLIB@
 SED = @SED@
 SET_MAKE = @SET_MAKE@
 SHELL = @SHELL@
@@ -488,7 +514,9 @@ abs_builddir = @abs_builddir@
 abs_srcdir = @abs_srcdir@
 abs_top_builddir = @abs_top_builddir@
 abs_top_srcdir = @abs_top_srcdir@
+ac_ct_AR = @ac_ct_AR@
 ac_ct_CC = @ac_ct_CC@
+ac_ct_DUMPBIN = @ac_ct_DUMPBIN@
 am__include = @am__include@
 am__leading_dot = @am__leading_dot@
 am__quote = @am__quote@
@@ -571,7 +599,7 @@ mapper_test_SOURCES = \
 all: all-am
 
 .SUFFIXES:
-.SUFFIXES: .c .log .o .obj .test .test$(EXEEXT) .trs
+.SUFFIXES: .c .lo .log .o .obj .test .test$(EXEEXT) .trs
 $(srcdir)/Makefile.in: @MAINTAINER_MODE_TRUE@ $(srcdir)/Makefile.am  $(am__configure_deps)
 	@for dep in $?; do \
 	  case '$(am__configure_deps)' in \
@@ -603,11 +631,38 @@ $(ACLOCAL_M4): @MAINTAINER_MODE_TRUE@ $(am__aclocal_m4_deps)
 $(am__aclocal_m4_deps):
 
 clean-checkPROGRAMS:
-	-test -z "$(check_PROGRAMS)" || rm -f $(check_PROGRAMS)
+	@list='$(check_PROGRAMS)'; test -n "$$list" || exit 0; \
+	echo " rm -f" $$list; \
+	rm -f $$list || exit $$?; \
+	test -n "$(EXEEXT)" || exit 0; \
+	list=`for p in $$list; do echo "$$p"; done | sed 's/$(EXEEXT)$$//'`; \
+	echo " rm -f" $$list; \
+	rm -f $$list
+../$(am__dirstamp):
+	@$(MKDIR_P) ..
+	@: > ../$(am__dirstamp)
+../$(DEPDIR)/$(am__dirstamp):
+	@$(MKDIR_P) ../$(DEPDIR)
+	@: > ../$(DEPDIR)/$(am__dirstamp)
+../container.$(OBJEXT): ../$(am__dirstamp) \
+	../$(DEPDIR)/$(am__dirstamp)
+../container-riff-wave.$(OBJEXT): ../$(am__dirstamp) \
+	../$(DEPDIR)/$(am__dirstamp)
+../container-au.$(OBJEXT): ../$(am__dirstamp) \
+	../$(DEPDIR)/$(am__dirstamp)
+../container-voc.$(OBJEXT): ../$(am__dirstamp) \
+	../$(DEPDIR)/$(am__dirstamp)
+../container-raw.$(OBJEXT): ../$(am__dirstamp) \
+	../$(DEPDIR)/$(am__dirstamp)
 
 container-test$(EXEEXT): $(container_test_OBJECTS) $(container_test_DEPENDENCIES) $(EXTRA_container_test_DEPENDENCIES) 
 	@rm -f container-test$(EXEEXT)
 	$(AM_V_CCLD)$(LINK) $(container_test_OBJECTS) $(container_test_LDADD) $(LIBS)
+../mapper.$(OBJEXT): ../$(am__dirstamp) ../$(DEPDIR)/$(am__dirstamp)
+../mapper-single.$(OBJEXT): ../$(am__dirstamp) \
+	../$(DEPDIR)/$(am__dirstamp)
+../mapper-multiple.$(OBJEXT): ../$(am__dirstamp) \
+	../$(DEPDIR)/$(am__dirstamp)
 
 mapper-test$(EXEEXT): $(mapper_test_OBJECTS) $(mapper_test_DEPENDENCIES) $(EXTRA_mapper_test_DEPENDENCIES) 
 	@rm -f mapper-test$(EXEEXT)
@@ -615,21 +670,22 @@ mapper-test$(EXEEXT): $(mapper_test_OBJECTS) $(mapper_test_DEPENDENCIES) $(EXTRA
 
 mostlyclean-compile:
 	-rm -f *.$(OBJEXT)
+	-rm -f ../*.$(OBJEXT)
 
 distclean-compile:
 	-rm -f *.tab.c
 
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/container-au.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/container-raw.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/container-riff-wave.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@../$(DEPDIR)/container-au.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@../$(DEPDIR)/container-raw.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@../$(DEPDIR)/container-riff-wave.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@../$(DEPDIR)/container-voc.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@../$(DEPDIR)/container.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@../$(DEPDIR)/mapper-multiple.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@../$(DEPDIR)/mapper-single.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@../$(DEPDIR)/mapper.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/container-test.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/container-voc.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/container.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/generator.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mapper-multiple.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mapper-single.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mapper-test.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mapper.Po@am__quote@ # am--include-marker
 
 $(am__depfiles_remade):
 	@$(MKDIR_P) $(@D)
@@ -638,130 +694,34 @@ $(am__depfiles_remade):
 am--depfiles: $(am__depfiles_remade)
 
 .c.o:
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(COMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ $<
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/$*.Tpo $(DEPDIR)/$*.Po
+@am__fastdepCC_TRUE@	$(AM_V_CC)depbase=`echo $@ | sed 's|[^/]*$$|$(DEPDIR)/&|;s|\.o$$||'`;\
+@am__fastdepCC_TRUE@	$(COMPILE) -MT $@ -MD -MP -MF $$depbase.Tpo -c -o $@ $< &&\
+@am__fastdepCC_TRUE@	$(am__mv) $$depbase.Tpo $$depbase.Po
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$<' object='$@' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(COMPILE) -c -o $@ $<
 
 .c.obj:
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(COMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ `$(CYGPATH_W) '$<'`
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/$*.Tpo $(DEPDIR)/$*.Po
+@am__fastdepCC_TRUE@	$(AM_V_CC)depbase=`echo $@ | sed 's|[^/]*$$|$(DEPDIR)/&|;s|\.obj$$||'`;\
+@am__fastdepCC_TRUE@	$(COMPILE) -MT $@ -MD -MP -MF $$depbase.Tpo -c -o $@ `$(CYGPATH_W) '$<'` &&\
+@am__fastdepCC_TRUE@	$(am__mv) $$depbase.Tpo $$depbase.Po
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$<' object='$@' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(COMPILE) -c -o $@ `$(CYGPATH_W) '$<'`
 
-container.o: ../container.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT container.o -MD -MP -MF $(DEPDIR)/container.Tpo -c -o container.o `test -f '../container.c' || echo '$(srcdir)/'`../container.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/container.Tpo $(DEPDIR)/container.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='../container.c' object='container.o' libtool=no @AMDEPBACKSLASH@
+.c.lo:
+@am__fastdepCC_TRUE@	$(AM_V_CC)depbase=`echo $@ | sed 's|[^/]*$$|$(DEPDIR)/&|;s|\.lo$$||'`;\
+@am__fastdepCC_TRUE@	$(LTCOMPILE) -MT $@ -MD -MP -MF $$depbase.Tpo -c -o $@ $< &&\
+@am__fastdepCC_TRUE@	$(am__mv) $$depbase.Tpo $$depbase.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$<' object='$@' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o container.o `test -f '../container.c' || echo '$(srcdir)/'`../container.c
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LTCOMPILE) -c -o $@ $<
 
-container.obj: ../container.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT container.obj -MD -MP -MF $(DEPDIR)/container.Tpo -c -o container.obj `if test -f '../container.c'; then $(CYGPATH_W) '../container.c'; else $(CYGPATH_W) '$(srcdir)/../container.c'; fi`
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/container.Tpo $(DEPDIR)/container.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='../container.c' object='container.obj' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o container.obj `if test -f '../container.c'; then $(CYGPATH_W) '../container.c'; else $(CYGPATH_W) '$(srcdir)/../container.c'; fi`
+mostlyclean-libtool:
+	-rm -f *.lo
 
-container-riff-wave.o: ../container-riff-wave.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT container-riff-wave.o -MD -MP -MF $(DEPDIR)/container-riff-wave.Tpo -c -o container-riff-wave.o `test -f '../container-riff-wave.c' || echo '$(srcdir)/'`../container-riff-wave.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/container-riff-wave.Tpo $(DEPDIR)/container-riff-wave.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='../container-riff-wave.c' object='container-riff-wave.o' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o container-riff-wave.o `test -f '../container-riff-wave.c' || echo '$(srcdir)/'`../container-riff-wave.c
-
-container-riff-wave.obj: ../container-riff-wave.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT container-riff-wave.obj -MD -MP -MF $(DEPDIR)/container-riff-wave.Tpo -c -o container-riff-wave.obj `if test -f '../container-riff-wave.c'; then $(CYGPATH_W) '../container-riff-wave.c'; else $(CYGPATH_W) '$(srcdir)/../container-riff-wave.c'; fi`
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/container-riff-wave.Tpo $(DEPDIR)/container-riff-wave.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='../container-riff-wave.c' object='container-riff-wave.obj' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o container-riff-wave.obj `if test -f '../container-riff-wave.c'; then $(CYGPATH_W) '../container-riff-wave.c'; else $(CYGPATH_W) '$(srcdir)/../container-riff-wave.c'; fi`
-
-container-au.o: ../container-au.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT container-au.o -MD -MP -MF $(DEPDIR)/container-au.Tpo -c -o container-au.o `test -f '../container-au.c' || echo '$(srcdir)/'`../container-au.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/container-au.Tpo $(DEPDIR)/container-au.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='../container-au.c' object='container-au.o' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o container-au.o `test -f '../container-au.c' || echo '$(srcdir)/'`../container-au.c
-
-container-au.obj: ../container-au.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT container-au.obj -MD -MP -MF $(DEPDIR)/container-au.Tpo -c -o container-au.obj `if test -f '../container-au.c'; then $(CYGPATH_W) '../container-au.c'; else $(CYGPATH_W) '$(srcdir)/../container-au.c'; fi`
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/container-au.Tpo $(DEPDIR)/container-au.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='../container-au.c' object='container-au.obj' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o container-au.obj `if test -f '../container-au.c'; then $(CYGPATH_W) '../container-au.c'; else $(CYGPATH_W) '$(srcdir)/../container-au.c'; fi`
-
-container-voc.o: ../container-voc.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT container-voc.o -MD -MP -MF $(DEPDIR)/container-voc.Tpo -c -o container-voc.o `test -f '../container-voc.c' || echo '$(srcdir)/'`../container-voc.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/container-voc.Tpo $(DEPDIR)/container-voc.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='../container-voc.c' object='container-voc.o' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o container-voc.o `test -f '../container-voc.c' || echo '$(srcdir)/'`../container-voc.c
-
-container-voc.obj: ../container-voc.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT container-voc.obj -MD -MP -MF $(DEPDIR)/container-voc.Tpo -c -o container-voc.obj `if test -f '../container-voc.c'; then $(CYGPATH_W) '../container-voc.c'; else $(CYGPATH_W) '$(srcdir)/../container-voc.c'; fi`
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/container-voc.Tpo $(DEPDIR)/container-voc.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='../container-voc.c' object='container-voc.obj' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o container-voc.obj `if test -f '../container-voc.c'; then $(CYGPATH_W) '../container-voc.c'; else $(CYGPATH_W) '$(srcdir)/../container-voc.c'; fi`
-
-container-raw.o: ../container-raw.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT container-raw.o -MD -MP -MF $(DEPDIR)/container-raw.Tpo -c -o container-raw.o `test -f '../container-raw.c' || echo '$(srcdir)/'`../container-raw.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/container-raw.Tpo $(DEPDIR)/container-raw.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='../container-raw.c' object='container-raw.o' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o container-raw.o `test -f '../container-raw.c' || echo '$(srcdir)/'`../container-raw.c
-
-container-raw.obj: ../container-raw.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT container-raw.obj -MD -MP -MF $(DEPDIR)/container-raw.Tpo -c -o container-raw.obj `if test -f '../container-raw.c'; then $(CYGPATH_W) '../container-raw.c'; else $(CYGPATH_W) '$(srcdir)/../container-raw.c'; fi`
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/container-raw.Tpo $(DEPDIR)/container-raw.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='../container-raw.c' object='container-raw.obj' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o container-raw.obj `if test -f '../container-raw.c'; then $(CYGPATH_W) '../container-raw.c'; else $(CYGPATH_W) '$(srcdir)/../container-raw.c'; fi`
-
-mapper.o: ../mapper.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT mapper.o -MD -MP -MF $(DEPDIR)/mapper.Tpo -c -o mapper.o `test -f '../mapper.c' || echo '$(srcdir)/'`../mapper.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/mapper.Tpo $(DEPDIR)/mapper.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='../mapper.c' object='mapper.o' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o mapper.o `test -f '../mapper.c' || echo '$(srcdir)/'`../mapper.c
-
-mapper.obj: ../mapper.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT mapper.obj -MD -MP -MF $(DEPDIR)/mapper.Tpo -c -o mapper.obj `if test -f '../mapper.c'; then $(CYGPATH_W) '../mapper.c'; else $(CYGPATH_W) '$(srcdir)/../mapper.c'; fi`
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/mapper.Tpo $(DEPDIR)/mapper.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='../mapper.c' object='mapper.obj' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o mapper.obj `if test -f '../mapper.c'; then $(CYGPATH_W) '../mapper.c'; else $(CYGPATH_W) '$(srcdir)/../mapper.c'; fi`
-
-mapper-single.o: ../mapper-single.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT mapper-single.o -MD -MP -MF $(DEPDIR)/mapper-single.Tpo -c -o mapper-single.o `test -f '../mapper-single.c' || echo '$(srcdir)/'`../mapper-single.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/mapper-single.Tpo $(DEPDIR)/mapper-single.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='../mapper-single.c' object='mapper-single.o' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o mapper-single.o `test -f '../mapper-single.c' || echo '$(srcdir)/'`../mapper-single.c
-
-mapper-single.obj: ../mapper-single.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT mapper-single.obj -MD -MP -MF $(DEPDIR)/mapper-single.Tpo -c -o mapper-single.obj `if test -f '../mapper-single.c'; then $(CYGPATH_W) '../mapper-single.c'; else $(CYGPATH_W) '$(srcdir)/../mapper-single.c'; fi`
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/mapper-single.Tpo $(DEPDIR)/mapper-single.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='../mapper-single.c' object='mapper-single.obj' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o mapper-single.obj `if test -f '../mapper-single.c'; then $(CYGPATH_W) '../mapper-single.c'; else $(CYGPATH_W) '$(srcdir)/../mapper-single.c'; fi`
-
-mapper-multiple.o: ../mapper-multiple.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT mapper-multiple.o -MD -MP -MF $(DEPDIR)/mapper-multiple.Tpo -c -o mapper-multiple.o `test -f '../mapper-multiple.c' || echo '$(srcdir)/'`../mapper-multiple.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/mapper-multiple.Tpo $(DEPDIR)/mapper-multiple.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='../mapper-multiple.c' object='mapper-multiple.o' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o mapper-multiple.o `test -f '../mapper-multiple.c' || echo '$(srcdir)/'`../mapper-multiple.c
-
-mapper-multiple.obj: ../mapper-multiple.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT mapper-multiple.obj -MD -MP -MF $(DEPDIR)/mapper-multiple.Tpo -c -o mapper-multiple.obj `if test -f '../mapper-multiple.c'; then $(CYGPATH_W) '../mapper-multiple.c'; else $(CYGPATH_W) '$(srcdir)/../mapper-multiple.c'; fi`
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/mapper-multiple.Tpo $(DEPDIR)/mapper-multiple.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='../mapper-multiple.c' object='mapper-multiple.obj' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o mapper-multiple.obj `if test -f '../mapper-multiple.c'; then $(CYGPATH_W) '../mapper-multiple.c'; else $(CYGPATH_W) '$(srcdir)/../mapper-multiple.c'; fi`
+clean-libtool:
+	-rm -rf .libs _libs
 
 ID: $(am__tagged_files)
 	$(am__define_uniq_tagged_files); mkid -fID $$unique
@@ -1053,26 +1013,29 @@ clean-generic:
 distclean-generic:
 	-test -z "$(CONFIG_CLEAN_FILES)" || rm -f $(CONFIG_CLEAN_FILES)
 	-test . = "$(srcdir)" || test -z "$(CONFIG_CLEAN_VPATH_FILES)" || rm -f $(CONFIG_CLEAN_VPATH_FILES)
+	-rm -f ../$(DEPDIR)/$(am__dirstamp)
+	-rm -f ../$(am__dirstamp)
 
 maintainer-clean-generic:
 	@echo "This command is intended for maintainers to use"
 	@echo "it deletes files that may require special tools to rebuild."
 clean: clean-am
 
-clean-am: clean-checkPROGRAMS clean-generic mostlyclean-am
+clean-am: clean-checkPROGRAMS clean-generic clean-libtool \
+	mostlyclean-am
 
 distclean: distclean-am
-		-rm -f ./$(DEPDIR)/container-au.Po
-	-rm -f ./$(DEPDIR)/container-raw.Po
-	-rm -f ./$(DEPDIR)/container-riff-wave.Po
+		-rm -f ../$(DEPDIR)/container-au.Po
+	-rm -f ../$(DEPDIR)/container-raw.Po
+	-rm -f ../$(DEPDIR)/container-riff-wave.Po
+	-rm -f ../$(DEPDIR)/container-voc.Po
+	-rm -f ../$(DEPDIR)/container.Po
+	-rm -f ../$(DEPDIR)/mapper-multiple.Po
+	-rm -f ../$(DEPDIR)/mapper-single.Po
+	-rm -f ../$(DEPDIR)/mapper.Po
 	-rm -f ./$(DEPDIR)/container-test.Po
-	-rm -f ./$(DEPDIR)/container-voc.Po
-	-rm -f ./$(DEPDIR)/container.Po
 	-rm -f ./$(DEPDIR)/generator.Po
-	-rm -f ./$(DEPDIR)/mapper-multiple.Po
-	-rm -f ./$(DEPDIR)/mapper-single.Po
 	-rm -f ./$(DEPDIR)/mapper-test.Po
-	-rm -f ./$(DEPDIR)/mapper.Po
 	-rm -f Makefile
 distclean-am: clean-am distclean-compile distclean-generic \
 	distclean-tags
@@ -1118,23 +1081,24 @@ install-ps-am:
 installcheck-am:
 
 maintainer-clean: maintainer-clean-am
-		-rm -f ./$(DEPDIR)/container-au.Po
-	-rm -f ./$(DEPDIR)/container-raw.Po
-	-rm -f ./$(DEPDIR)/container-riff-wave.Po
+		-rm -f ../$(DEPDIR)/container-au.Po
+	-rm -f ../$(DEPDIR)/container-raw.Po
+	-rm -f ../$(DEPDIR)/container-riff-wave.Po
+	-rm -f ../$(DEPDIR)/container-voc.Po
+	-rm -f ../$(DEPDIR)/container.Po
+	-rm -f ../$(DEPDIR)/mapper-multiple.Po
+	-rm -f ../$(DEPDIR)/mapper-single.Po
+	-rm -f ../$(DEPDIR)/mapper.Po
 	-rm -f ./$(DEPDIR)/container-test.Po
-	-rm -f ./$(DEPDIR)/container-voc.Po
-	-rm -f ./$(DEPDIR)/container.Po
 	-rm -f ./$(DEPDIR)/generator.Po
-	-rm -f ./$(DEPDIR)/mapper-multiple.Po
-	-rm -f ./$(DEPDIR)/mapper-single.Po
 	-rm -f ./$(DEPDIR)/mapper-test.Po
-	-rm -f ./$(DEPDIR)/mapper.Po
 	-rm -f Makefile
 maintainer-clean-am: distclean-am maintainer-clean-generic
 
 mostlyclean: mostlyclean-am
 
-mostlyclean-am: mostlyclean-compile mostlyclean-generic
+mostlyclean-am: mostlyclean-compile mostlyclean-generic \
+	mostlyclean-libtool
 
 pdf: pdf-am
 
@@ -1149,16 +1113,17 @@ uninstall-am:
 .MAKE: check-am install-am install-strip
 
 .PHONY: CTAGS GTAGS TAGS all all-am am--depfiles check check-TESTS \
-	check-am clean clean-checkPROGRAMS clean-generic cscopelist-am \
-	ctags ctags-am distclean distclean-compile distclean-generic \
-	distclean-tags distdir dvi dvi-am html html-am info info-am \
-	install install-am install-data install-data-am install-dvi \
-	install-dvi-am install-exec install-exec-am install-html \
-	install-html-am install-info install-info-am install-man \
-	install-pdf install-pdf-am install-ps install-ps-am \
-	install-strip installcheck installcheck-am installdirs \
-	maintainer-clean maintainer-clean-generic mostlyclean \
-	mostlyclean-compile mostlyclean-generic pdf pdf-am ps ps-am \
+	check-am clean clean-checkPROGRAMS clean-generic clean-libtool \
+	cscopelist-am ctags ctags-am distclean distclean-compile \
+	distclean-generic distclean-libtool distclean-tags distdir dvi \
+	dvi-am html html-am info info-am install install-am \
+	install-data install-data-am install-dvi install-dvi-am \
+	install-exec install-exec-am install-html install-html-am \
+	install-info install-info-am install-man install-pdf \
+	install-pdf-am install-ps install-ps-am install-strip \
+	installcheck installcheck-am installdirs maintainer-clean \
+	maintainer-clean-generic mostlyclean mostlyclean-compile \
+	mostlyclean-generic mostlyclean-libtool pdf pdf-am ps ps-am \
 	recheck tags tags-am uninstall uninstall-am
 
 .PRECIOUS: Makefile

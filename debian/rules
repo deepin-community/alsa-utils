@@ -1,8 +1,8 @@
 #!/usr/bin/make -f
 DEB_HOST_MULTIARCH ?= $(shell dpkg-architecture -qDEB_HOST_MULTIARCH)
 export DEB_BUILD_MAINT_OPTIONS = hardening=+all
-export DEB_CFLAGS_MAINT_APPEND = -fstack-protector-strong -D_FORTITY_SOURCE=1 \
--z noexecstack -pie -fPIC -z lazy
+export deb_udevdir = $(shell pkg-config --variable=udevdir udev | sed s,^/,,)
+export deb_systemdsystemunitdir = $(shell pkg-config --variable=systemdsystemunitdir systemd | sed s,^/,,)
 
 %:
 	dh $@
@@ -12,7 +12,7 @@ override_dh_auto_configure:
 			--with-asound-state-dir=/var/lib/alsa \
 			--with-alsactl-home-dir=/run/alsa \
 			--with-alsactl-runtime-dir=/run/alsa/runtime \
-			--with-systemdsystemunitdir=/lib/systemd/system \
+			--with-systemdsystemunitdir=/$(deb_systemdsystemunitdir) \
 			--disable-alsaconf
 
 override_dh_auto_test:
@@ -31,13 +31,11 @@ override_dh_install:
 	mkdir debian/tmp/usr/share/man/man8
 	mv debian/tmp/usr/share/man/man1/alsa-info.sh.1 debian/tmp/usr/share/man/man8/alsa-info.8
 	mv debian/tmp/usr/sbin/alsabat-test.sh debian/tmp/usr/sbin/alsabat-test
+	find debian/tmp -name "*.la" -delete
 	dh_install -Xusr/share/man/fr
 
 override_dh_installchangelogs:
 	dh_installchangelogs -XChangeLog
-
-override_dh_missing:
-	dh_missing --fail-missing
 
 override_dh_installinit:
 	dh_installinit --no-start

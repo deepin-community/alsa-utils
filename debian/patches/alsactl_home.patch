@@ -6,7 +6,7 @@ Index: alsa-utils/configure.ac
 ===================================================================
 --- alsa-utils.orig/configure.ac
 +++ alsa-utils/configure.ac
-@@ -431,6 +431,12 @@ AC_ARG_WITH([alsactl-pidfile-dir],
+@@ -451,6 +451,12 @@ AC_ARG_WITH([alsactl-pidfile-dir],
          [ALSACTL_PIDFILE_DIR="/var/run"])
  AC_SUBST(ALSACTL_PIDFILE_DIR)
  
@@ -23,7 +23,7 @@ Index: alsa-utils/alsactl/Makefile.am
 ===================================================================
 --- alsa-utils.orig/alsactl/Makefile.am
 +++ alsa-utils/alsactl/Makefile.am
-@@ -42,6 +42,7 @@ endif
+@@ -45,6 +45,7 @@ endif
  edit = \
  	$(SED) -r -e 's,@sbindir\@,$(sbindir),g' \
  		  -e 's,@mydatadir\@,$(mydatadir),g' \
@@ -63,9 +63,9 @@ Index: alsa-utils/alsactl/90-alsa-restore.rules.in
  GOTO="alsa_restore_end"
  
  LABEL="alsa_restore_go"
--TEST!="@daemonswitch@", RUN+="@sbindir@/alsactl restore $attr{device/number}"
--TEST=="@daemonswitch@", RUN+="@sbindir@/alsactl nrestore $attr{device/number}"
-+TEST!="@daemonswitch@", RUN+="@sbindir@/alsactl -E HOME=@alsactlhome@ restore $attr{device/number}"
-+TEST=="@daemonswitch@", RUN+="@sbindir@/alsactl -E HOME=@alsactlhome@ nrestore $attr{device/number}"
+-TEST!="@daemonswitch@", RUN+="@sbindir@/alsactl restore $devnode"
+-TEST=="@daemonswitch@", RUN+="@sbindir@/alsactl nrestore $devnode"
++TEST!="@daemonswitch@", RUN+="@sbindir@/alsactl -E HOME=@alsactlhome@ restore $devnode"
++TEST=="@daemonswitch@", RUN+="@sbindir@/alsactl -E HOME=@alsactlhome@ nrestore $devnode"
  
  LABEL="alsa_restore_end"
