@@ -1,5 +1,8 @@
 /* include/aconfig.h.in.  Generated from configure.ac by autoheader.  */
 
+/* directory containing ALSA topology pre-process plugins */
+#undef ALSA_TOPOLOGY_PLUGIN_DIR
+
 /* directory containing alsa configuration */
 #undef DATADIR
 
@@ -46,6 +49,9 @@
    */
 #undef HAVE_DCGETTEXT
 
+/* Define to 1 if you have the <dlfcn.h> header file. */
+#undef HAVE_DLFCN_H
+
 /* Define to 1 if you have the <form.h> header file. */
 #undef HAVE_FORM_H
 
@@ -79,6 +85,9 @@
 /* Define to 1 if you have the `tinyalsa' library (-ltinyalsa). */
 #undef HAVE_LIBTINYALSA
 
+/* Define to 1 if you have the <malloc.h> header file. */
+#undef HAVE_MALLOC_H
+
 /* Define if Linux kernel supports memfd_create system call */
 #undef HAVE_MEMFD_CREATE
 
@@ -96,6 +105,9 @@
 
 /* alsa-lib supports snd_seq_client_info_get_card */
 #undef HAVE_SEQ_CLIENT_INFO_GET_CARD
+
+/* alsa-lib supports snd_seq_client_info_get_midi_version */
+#undef HAVE_SEQ_CLIENT_INFO_GET_MIDI_VERSION
 
 /* alsa-lib supports snd_seq_client_info_get_pid */
 #undef HAVE_SEQ_CLIENT_INFO_GET_PID
@@ -120,6 +132,9 @@
 
 /* Define to 1 if you have the <unistd.h> header file. */
 #undef HAVE_UNISTD_H
+
+/* Define to the sub-directory where libtool stores uninstalled libraries. */
+#undef LT_OBJDIR
 
 /* Name of package */
 #undef PACKAGE

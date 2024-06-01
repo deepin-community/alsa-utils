@@ -1,6 +1,7 @@
 debian/utils.sh /usr/share/alsa
-lib/systemd
-lib/udev
+${env:deb_systemdsystemunitdir}
+${env:deb_udevdir}/rules.d
 usr/bin
+usr/lib/*/alsa-topology/*.so
 usr/sbin
 usr/share
