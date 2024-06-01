@@ -13,9 +13,9 @@ Index: alsa-utils/alsactl/90-alsa-restore.rules.in
  GOTO="alsa_restore_end"
  
  LABEL="alsa_restore_go"
--TEST!="@daemonswitch@", RUN+="@sbindir@/alsactl -E HOME=@alsactlhome@ -E XDG_RUNTIME_DIR=@alsactlruntime@ restore $attr{device/number}"
--TEST=="@daemonswitch@", RUN+="@sbindir@/alsactl -E HOME=@alsactlhome@ -E XDG_RUNTIME_DIR=@alsactlruntime@ nrestore $attr{device/number}"
-+TEST!="@daemonswitch@", TEST=="/usr/sbin/alsactl", RUN+="@sbindir@/alsactl -E HOME=@alsactlhome@ -E XDG_RUNTIME_DIR=@alsactlruntime@ restore $attr{device/number}"
-+TEST=="@daemonswitch@", TEST=="/usr/sbin/alsactl", RUN+="@sbindir@/alsactl -E HOME=@alsactlhome@ -E XDG_RUNTIME_DIR=@alsactlruntime@ nrestore $attr{device/number}"
+-TEST!="@daemonswitch@", RUN+="@sbindir@/alsactl -E HOME=@alsactlhome@ -E XDG_RUNTIME_DIR=@alsactlruntime@ restore $devnode"
+-TEST=="@daemonswitch@", RUN+="@sbindir@/alsactl -E HOME=@alsactlhome@ -E XDG_RUNTIME_DIR=@alsactlruntime@ nrestore $devnode"
++TEST!="@daemonswitch@", TEST=="/usr/sbin/alsactl" RUN+="@sbindir@/alsactl -E HOME=@alsactlhome@ -E XDG_RUNTIME_DIR=@alsactlruntime@ restore $devnode"
++TEST=="@daemonswitch@", TEST=="/usr/sbin/alsactl" RUN+="@sbindir@/alsactl -E HOME=@alsactlhome@ -E XDG_RUNTIME_DIR=@alsactlruntime@ nrestore $devnode"
  
  LABEL="alsa_restore_end"

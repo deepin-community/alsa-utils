@@ -107,6 +107,7 @@ AC_LANG_PUSH([C])
 AC_MSG_CHECKING([for libasound headers version >= $alsa_min_major_version.$alsa_min_minor_version.$alsa_min_micro_version ($min_alsa_version)])
 AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[
 #include <alsa/asoundlib.h>
+#include <stdlib.h>
 ]], [[
 /* ensure backward compatibility */
 #if !defined(SND_LIB_MAJOR) && defined(SOUNDLIB_VERSION_MAJOR)
@@ -152,6 +153,7 @@ AC_MSG_CHECKING([for libatopology (sound headers version > 1.1.9)])
 AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[
 #include <alsa/asoundlib.h>
 #include <alsa/topology.h>
+#include <stdlib.h>
 ]], [[
 /* ensure backward compatibility */
 #if !defined(SND_LIB_VERSION)
@@ -1724,6 +1726,11 @@ m4_include([m4/intlmacosx.m4])
 m4_include([m4/lib-ld.m4])
 m4_include([m4/lib-link.m4])
 m4_include([m4/lib-prefix.m4])
+m4_include([m4/libtool.m4])
+m4_include([m4/ltoptions.m4])
+m4_include([m4/ltsugar.m4])
+m4_include([m4/ltversion.m4])
+m4_include([m4/lt~obsolete.m4])
 m4_include([m4/nls.m4])
 m4_include([m4/po.m4])
 m4_include([m4/progtest.m4])
