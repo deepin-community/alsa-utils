@@ -1,12 +1,11 @@
 Source: alsa-utils
 Section: sound
-Priority: optional
 Maintainer: Debian ALSA Maintainers <pkg-alsa-devel@lists.alioth.debian.org>
 Uploaders: Jordi Mallach <jordi@debian.org>,
            Elimar Riesebieter <riesebie@lxtec.de>,
            Luke Yelavich <themuso@ubuntu.com>
 Build-Depends: debhelper-compat (= 13),
-               libasound2-dev (>= 1.2.1),
+               libasound2-dev (>= 1.2.15),
                libatopology-dev (>= 1.2.2),
                libfftw3-dev,
                libncurses-dev,
@@ -15,11 +14,10 @@ Build-Depends: debhelper-compat (= 13),
                python3-docutils,
                systemd-dev,
                xmlto
-Standards-Version: 4.7.0
+Standards-Version: 4.7.3
 Homepage: https://www.alsa-project.org/
 Vcs-Git: https://salsa.debian.org/alsa-team/alsa-utils.git
 Vcs-Browser: https://salsa.debian.org/alsa-team/alsa-utils
-Rules-Requires-Root: no
 
 Package: alsa-utils
 Architecture: linux-any

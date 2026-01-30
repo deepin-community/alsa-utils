@@ -7,7 +7,7 @@ Index: alsa-utils/alsa-info/alsa-info.sh
 ===================================================================
 --- alsa-utils.orig/alsa-info/alsa-info.sh
 +++ alsa-utils/alsa-info/alsa-info.sh
-@@ -733,11 +733,6 @@ if [ -s "$TEMPDIR/alsa-usbmixer.tmp" ];
+@@ -753,11 +753,6 @@ if [ -s "$TEMPDIR/alsa-usbmixer.tmp" ];
  	echo "" >> $FILE
  fi
  
@@ -19,7 +19,7 @@ Index: alsa-utils/alsa-info/alsa-info.sh
  fi # proceed
  
  #loop through command line arguments, until none are left.
-@@ -746,7 +741,6 @@ if [ -n "$1" ]; then
+@@ -766,7 +761,6 @@ if [ -n "$1" ]; then
  	do
  	case "$1" in
  		--pastebin)

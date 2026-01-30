@@ -6,7 +6,7 @@ Index: alsa-utils/configure.ac
 ===================================================================
 --- alsa-utils.orig/configure.ac
 +++ alsa-utils/configure.ac
-@@ -451,6 +451,12 @@ AC_ARG_WITH([alsactl-pidfile-dir],
+@@ -440,6 +440,12 @@ AC_ARG_WITH([alsactl-pidfile-dir],
          [ALSACTL_PIDFILE_DIR="/var/run"])
  AC_SUBST(ALSACTL_PIDFILE_DIR)
  
@@ -23,18 +23,18 @@ Index: alsa-utils/alsactl/Makefile.am
 ===================================================================
 --- alsa-utils.orig/alsactl/Makefile.am
 +++ alsa-utils/alsactl/Makefile.am
-@@ -45,6 +45,7 @@ endif
- edit = \
+@@ -50,6 +50,7 @@ edit = \
+ 	mkdir -p conf; \
  	$(SED) -r -e 's,@sbindir\@,$(sbindir),g' \
  		  -e 's,@mydatadir\@,$(mydatadir),g' \
 +		  -e 's,@alsactlhome\@,$(ALSACTL_HOME_DIR),g' \
  		  -e 's,@daemonswitch\@,$(ALSACTL_DAEMONSWITCH),g' \
  		  -e 's,@asoundrcfile\@,$(ASOUND_STATE_DIR)/asound.state,g' \
- 							< $< > $@ || rm $@
-Index: alsa-utils/alsactl/alsa-restore.service.in
+ 		  -e "s;@extratest\@;$${extratest};g" \
+Index: alsa-utils/alsactl/conf/alsa-restore.service.in
 ===================================================================
---- alsa-utils.orig/alsactl/alsa-restore.service.in
-+++ alsa-utils/alsactl/alsa-restore.service.in
+--- alsa-utils.orig/alsactl/conf/alsa-restore.service.in
++++ alsa-utils/alsactl/conf/alsa-restore.service.in
 @@ -11,5 +11,5 @@ ConditionPathExistsGlob=/dev/snd/control
  [Service]
  Type=oneshot
@@ -43,10 +43,10 @@ Index: alsa-utils/alsactl/alsa-restore.service.in
 -ExecStop=-@sbindir@/alsactl store
 +ExecStart=-@sbindir@/alsactl -E HOME=@alsactlhome@ restore
 +ExecStop=-@sbindir@/alsactl -E HOME=@alsactlhome@ store
-Index: alsa-utils/alsactl/alsa-state.service.in
+Index: alsa-utils/alsactl/conf/alsa-state.service.in
 ===================================================================
---- alsa-utils.orig/alsactl/alsa-state.service.in
-+++ alsa-utils/alsactl/alsa-state.service.in
+--- alsa-utils.orig/alsactl/conf/alsa-state.service.in
++++ alsa-utils/alsactl/conf/alsa-state.service.in
 @@ -9,5 +9,5 @@ ConditionPathExists=@daemonswitch@
  
  [Service]
@@ -55,17 +55,18 @@ Index: alsa-utils/alsactl/alsa-state.service.in
 -ExecStop=-@sbindir@/alsactl -s kill save_and_quit
 +ExecStart=-@sbindir@/alsactl -E HOME=@alsactlhome@ -s -n 19 -c rdaemon
 +ExecStop=-@sbindir@/alsactl -E HOME=@alsactlhome@ -s kill save_and_quit
-Index: alsa-utils/alsactl/90-alsa-restore.rules.in
+Index: alsa-utils/alsactl/conf/90-alsa-restore.rules.in
 ===================================================================
---- alsa-utils.orig/alsactl/90-alsa-restore.rules.in
-+++ alsa-utils/alsactl/90-alsa-restore.rules.in
-@@ -2,7 +2,7 @@ ACTION=="add", SUBSYSTEM=="sound", KERNE
- GOTO="alsa_restore_end"
+--- alsa-utils.orig/alsactl/conf/90-alsa-restore.rules.in
++++ alsa-utils/alsactl/conf/90-alsa-restore.rules.in
+@@ -24,8 +24,8 @@ IMPORT{program}="/usr/bin/cat /run/udev/
+ ENV{ALSA_CARD_HDA_ANALOG}!="", ENV{ALSA_CARD_NUMBER}="$env{ALSA_CARD_HDA_ANALOG}"
  
- LABEL="alsa_restore_go"
--TEST!="@daemonswitch@", RUN+="@sbindir@/alsactl restore $devnode"
--TEST=="@daemonswitch@", RUN+="@sbindir@/alsactl nrestore $devnode"
-+TEST!="@daemonswitch@", RUN+="@sbindir@/alsactl -E HOME=@alsactlhome@ restore $devnode"
-+TEST=="@daemonswitch@", RUN+="@sbindir@/alsactl -E HOME=@alsactlhome@ nrestore $devnode"
+ LABEL="alsa_restore_std"
+-TEST!="@daemonswitch@", IMPORT{program}="@sbindir@/alsactl@args@ --export restore $env{ALSA_CARD_NUMBER}"
+-TEST=="@daemonswitch@", IMPORT{program}="@sbindir@/alsactl@args@ --export nrestore $env{ALSA_CARD_NUMBER}"
++TEST!="@daemonswitch@", IMPORT{program}="@sbindir@/alsactl@args@ --export -E HOME=@alsactlhome@ restore $env{ALSA_CARD_NUMBER}"
++TEST=="@daemonswitch@", IMPORT{program}="@sbindir@/alsactl@args@ --export -E HOME=@alsactlhome@ nrestore $env{ALSA_CARD_NUMBER}"
+ ENV{ALSA_CARD_STATE}=="waiting", ENV{SYSTEMD_WANTS}="alsa-card-wait@$env{ALSA_CARD_NUMBER}.service"
  
  LABEL="alsa_restore_end"

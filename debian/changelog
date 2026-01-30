@@ -1,3 +1,54 @@
+alsa-utils (1.2.15.2-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Update copyright years.
+
+ -- Jordi Mallach <jordi@debian.org>  Mon, 19 Jan 2026 10:46:57 +0100
+
+alsa-utils (1.2.15.1-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Remove redundant Priority control field.
+  * Update Standards-Version to 4.7.3.
+  * Refresh patches.
+
+ -- Jordi Mallach <jordi@debian.org>  Thu, 08 Jan 2026 00:25:12 +0100
+
+alsa-utils (1.2.15-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Update watch file to version 5.
+  * Drop redundant Rules-Requires-Root control field.
+  * Refresh patches.
+  * Bump alsa-lib B-D to 1.2.15, for snd_lib_log_set_handler.
+
+ -- Jordi Mallach <jordi@debian.org>  Thu, 11 Dec 2025 10:57:52 +0100
+
+alsa-utils (1.2.14-2) unstable; urgency=medium
+
+  * Fix non-updated label in last patch merge (closes: #1104719).
+
+ -- Jordi Mallach <jordi@debian.org>  Fri, 19 Sep 2025 12:17:08 +0200
+
+alsa-utils (1.2.14-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Update copyright years.
+  * Update Standards-Version to 4.7.2.
+  * Update patch alsa-info_manpage.patch: upstream has now moved
+    the manpage to section 8, like us. Adapt rules for this.
+  * Refresh all other patches.
+
+ -- Jordi Mallach <jordi@debian.org>  Mon, 14 Apr 2025 22:04:50 +0200
+
+alsa-utils (1.2.13-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Bump Build-Depends on libasound2-dev to 1.2.13, as per configure.ac.
+  * Refresh patches.
+
+ -- Jordi Mallach <jordi@debian.org>  Thu, 02 Jan 2025 13:57:15 +0100
+
 alsa-utils (1.2.12-1) unstable; urgency=medium
 
   * New upstream release.

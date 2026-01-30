@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: alsa-utils 1.0.23\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-06-10 09:22+0000\n"
+"POT-Creation-Date: 2026-01-08 15:43+0100\n"
 "PO-Revision-Date: 2023-05-25 17:58+0900\n"
 "Last-Translator: Yi Yunseok <ironyunseok@protonmail.com>\n"
 "Language-Team: Librezale <librezale@librezale.eus>\n"
@@ -732,8 +732,8 @@ msgstr "정보 오류: %s"
 msgid "nonblock setting error: %s"
 msgstr "비블록 설정 오류: %s"
 
-#: aplay/aplay.c:880 aplay/aplay.c:1004 aplay/aplay.c:1310 aplay/aplay.c:1526
-#: aplay/aplay.c:2106 aplay/aplay.c:2136
+#: aplay/aplay.c:880 aplay/aplay.c:1004 aplay/aplay.c:1316 aplay/aplay.c:1539
+#: aplay/aplay.c:2119 aplay/aplay.c:2149
 msgid "not enough memory"
 msgstr "메모리 부족"
 
@@ -809,107 +809,108 @@ msgstr "주의: 포맷이 MU_LAW로 변경됨\n"
 msgid "Warning: format is changed to S16_BE\n"
 msgstr "주의: 포맷이 S16_BE로 변경됨\n"
 
-#: aplay/aplay.c:1258 aplay/aplay.c:2427 aplay/aplay.c:2434 aplay/aplay.c:2964
+#: aplay/aplay.c:1251
+#, fuzzy, c-format
+#| msgid "Warning: format is changed to MU_LAW\n"
+msgid "Warning: format is changed to A_LAW\n"
+msgstr "주의: 포맷이 MU_LAW로 변경됨\n"
+
+#: aplay/aplay.c:1264 aplay/aplay.c:2440 aplay/aplay.c:2447 aplay/aplay.c:2973
 msgid "read error"
 msgstr "읽기 오류"
 
-#: aplay/aplay.c:1288
+#: aplay/aplay.c:1294
 msgid "Channel numbers don't match between hw_params and channel map"
 msgstr "채널 맵과 hw_param 간 채널 번호가 일치하지 않음"
 
-#: aplay/aplay.c:1297
+#: aplay/aplay.c:1303
 #, c-format
 msgid "Warning: unable to get channel map\n"
 msgstr "주의: 채널 맵을 가져올 수 없음\n"
 
-#: aplay/aplay.c:1331
+#: aplay/aplay.c:1337
 #, fuzzy, c-format
 #| msgid "Channel %d doesn't match with hw_parmas"
 msgid "Channel %d doesn't match with hw_params"
 msgstr "채널 %d 및 hw_params가 일치하지 않음"
 
-#: aplay/aplay.c:1358
+#: aplay/aplay.c:1364
 msgid "Broken configuration for this PCM: no configurations available"
 msgstr "손상된 PCM 구성: 사용 가능한 구성이 없음"
 
-#: aplay/aplay.c:1362
+#: aplay/aplay.c:1368 aplay/aplay.c:1474
 #, c-format
 msgid "HW Params of device \"%s\":\n"
 msgstr "\"%s\" 장치의 하드웨어 매개변수:\n"
 
-#: aplay/aplay.c:1382
+#: aplay/aplay.c:1388
 msgid "Access type not available"
 msgstr "액세스 유형을 사용할 수 없음"
 
-#: aplay/aplay.c:1387
+#: aplay/aplay.c:1393
 msgid "Sample format non available"
 msgstr "사용할 수 없는 샘플 형식"
 
-#: aplay/aplay.c:1393
+#: aplay/aplay.c:1399
 #, fuzzy
 #| msgid "Sample format non available"
 msgid "Sample subformat not available"
 msgstr "사용할 수 없는 샘플 형식"
 
-#: aplay/aplay.c:1398
+#: aplay/aplay.c:1404
 msgid "Channels count non available"
 msgstr "채널 수를 사용할 수 없음"
 
-#: aplay/aplay.c:1413
+#: aplay/aplay.c:1419
 #, c-format
 msgid "Warning: rate is not accurate (requested = %iHz, got = %iHz)\n"
 msgstr "주의: 정확하지 않은 속도 (요청됨 = %iHz, 가져옴 = %iHz)\n"
 
-#: aplay/aplay.c:1419
+#: aplay/aplay.c:1425
 #, c-format
 msgid "         please, try the plug plugin %s\n"
 msgstr "         %s 플러그인을 연결해야 함\n"
 
-#: aplay/aplay.c:1456
+#: aplay/aplay.c:1462
 msgid "Unable to install hw params:"
 msgstr "하드웨어 매개변수 설치 불가:"
 
-#: aplay/aplay.c:1463
+#: aplay/aplay.c:1469
 #, c-format
 msgid "Can't use period equal to buffer size (%lu == %lu)"
 msgstr "버퍼 크기와 같은 주기는 사용할 수 없음 (%lu == %lu)"
 
-#: aplay/aplay.c:1469
+#: aplay/aplay.c:1482
 #, fuzzy
 #| msgid "unable to install sw params:"
 msgid "Unable to get current sw params."
 msgstr "소프트웨어 매개변수 설치 불가:"
 
-#: aplay/aplay.c:1509
+#: aplay/aplay.c:1522
 msgid "unable to install sw params:"
 msgstr "소프트웨어 매개변수 설치 불가:"
 
-#: aplay/aplay.c:1544
+#: aplay/aplay.c:1557
 #, c-format
 msgid "snd_pcm_mmap_begin problem: %s"
 msgstr "snd_pcm_mmap_begin 문제: %s"
 
-#: aplay/aplay.c:1573
+#: aplay/aplay.c:1586
 #, c-format
 msgid "stdin O_NONBLOCK flag setup failed\n"
 msgstr "stdin O_NONBLOCK 플래그 설정 실패\n"
 
-#: aplay/aplay.c:1610
+#: aplay/aplay.c:1623
 #, c-format
 msgid "\rPAUSE command ignored (no hw support)\n"
 msgstr "\r일시정지 명령이 무시됨 (하드웨어 지원 없음)\n"
 
-#: aplay/aplay.c:1618
+#: aplay/aplay.c:1631
 #, c-format
 msgid "pause push error: %s"
 msgstr "일시정지 푸시 오류: %s"
 
-#: aplay/aplay.c:1629
-#, c-format
-msgid "pause release error: %s"
-msgstr "일시정지 릴리즈 오류: %s"
-
-#: aplay/aplay.c:1645
+#: aplay/aplay.c:1634
 #, c-format
 msgid ""
 "\r=== PAUSE ===                                                            "
@@ -917,107 +918,112 @@ msgstr ""
 "\r=== 일시정지 "
 "===                                                            "
 
-#: aplay/aplay.c:1687
+#: aplay/aplay.c:1644
+#, c-format
+msgid "pause release error: %s"
+msgstr "일시정지 릴리즈 오류: %s"
+
+#: aplay/aplay.c:1700
 #, c-format
 msgid "status error: %s"
 msgstr "상태 오류: %s"
 
-#: aplay/aplay.c:1697 aplay/aplay.c:1708
+#: aplay/aplay.c:1710 aplay/aplay.c:1721
 #, c-format
 msgid "%s!!! (at least %.3f ms long)\n"
 msgstr "%s!!! (최소 %.3f ms 길이)\n"
 
-#: aplay/aplay.c:1698 aplay/aplay.c:1701 aplay/aplay.c:1709 aplay/aplay.c:1718
+#: aplay/aplay.c:1711 aplay/aplay.c:1714 aplay/aplay.c:1722 aplay/aplay.c:1731
 msgid "underrun"
 msgstr "언더런"
 
-#: aplay/aplay.c:1698 aplay/aplay.c:1709 aplay/aplay.c:1718
+#: aplay/aplay.c:1711 aplay/aplay.c:1722 aplay/aplay.c:1731
 msgid "overrun"
 msgstr "오버런"
 
-#: aplay/aplay.c:1713
+#: aplay/aplay.c:1726
 #, c-format
 msgid "Status:\n"
 msgstr "상태:\n"
 
-#: aplay/aplay.c:1717
+#: aplay/aplay.c:1730
 #, c-format
 msgid "fatal %s: %s"
 msgstr "치명적인 %s: %s"
 
-#: aplay/aplay.c:1723
+#: aplay/aplay.c:1736
 #, c-format
 msgid "xrun: prepare error: %s"
 msgstr "xrun: 준비 오류: %s"
 
-#: aplay/aplay.c:1730
+#: aplay/aplay.c:1743
 #, c-format
 msgid "Status(DRAINING):\n"
 msgstr "상태(사용 중):\n"
 
-#: aplay/aplay.c:1734
+#: aplay/aplay.c:1747
 #, c-format
 msgid "capture stream format change? attempting recover...\n"
 msgstr "스트림 형식 캡처가 변경됐나요? 복구를 시도합니다...\n"
 
-#: aplay/aplay.c:1736
+#: aplay/aplay.c:1749
 #, c-format
 msgid "xrun(DRAINING): prepare error: %s"
 msgstr "xrun(사용 중): 준비 오류: %s"
 
-#: aplay/aplay.c:1743
+#: aplay/aplay.c:1756
 #, c-format
 msgid "Status(R/W):\n"
 msgstr "상태(R/W):\n"
 
-#: aplay/aplay.c:1746
+#: aplay/aplay.c:1759
 #, c-format
 msgid "read/write error, state = %s"
 msgstr "읽기/쓰기 오류, 상태 = %s"
 
-#: aplay/aplay.c:1756
+#: aplay/aplay.c:1769
 #, c-format
 msgid "Suspended. Trying resume. "
 msgstr "중지됨. 재개합니다. "
 
-#: aplay/aplay.c:1762
+#: aplay/aplay.c:1775
 #, c-format
 msgid "Failed. Restarting stream. "
 msgstr "실패. 스트림을 재개합니다. "
 
-#: aplay/aplay.c:1765
+#: aplay/aplay.c:1778
 #, c-format
 msgid "suspend: prepare error: %s"
 msgstr "중지됨: 준비 오류: %s"
 
-#: aplay/aplay.c:1770
+#: aplay/aplay.c:1783
 #, c-format
 msgid "Done.\n"
 msgstr "완료.\n"
 
-#: aplay/aplay.c:1792
+#: aplay/aplay.c:1805
 #, c-format
 msgid " !clip  "
 msgstr " !클립  "
 
-#: aplay/aplay.c:1944
+#: aplay/aplay.c:1957
 #, c-format
 msgid "Unsupported bit size %d.\n"
 msgstr "지원되지 않는 비트 크기 %d.\n"
 
-#: aplay/aplay.c:1980
+#: aplay/aplay.c:1993
 #, c-format
 msgid "Max peak (%li samples): 0x%08x "
 msgstr "최대 피크 (%li 샘플): 0x%08x "
 
-#: aplay/aplay.c:2021
+#: aplay/aplay.c:2034
 #, c-format
 msgid ""
 "Suspicious buffer position (%li total): avail = %li, delay = %li, buffer = "
 "%li\n"
 msgstr "의심스러운 버퍼 위치 (%li 전체): 가능 = %li, 지연 = %li, 버퍼 = %li\n"
 
-#: aplay/aplay.c:2030
+#: aplay/aplay.c:2043
 #, fuzzy, c-format
 #| msgid ""
 #| "Suspicious buffer position (%li total): avail = %li, delay = %li, buffer "
@@ -1027,7 +1033,7 @@ msgid ""
 "buffer = %li\n"
 msgstr "의심스러운 버퍼 위치 (%li 전체): 가능 = %li, 지연 = %li, 버퍼 = %li\n"
 
-#: aplay/aplay.c:2034
+#: aplay/aplay.c:2047
 #, fuzzy, c-format
 #| msgid ""
 #| "Suspicious buffer position (%li total): avail = %li, delay = %li, buffer "
@@ -1037,7 +1043,7 @@ msgid ""
 "%li\n"
 msgstr "의심스러운 버퍼 위치 (%li 전체): 가능 = %li, 지연 = %li, 버퍼 = %li\n"
 
-#: aplay/aplay.c:2038
+#: aplay/aplay.c:2051
 #, fuzzy, c-format
 #| msgid ""
 #| "Suspicious buffer position (%li total): avail = %li, delay = %li, buffer "
@@ -1047,275 +1053,275 @@ msgid ""
 "delay = %li\n"
 msgstr "의심스러운 버퍼 위치 (%li 전체): 가능 = %li, 지연 = %li, 버퍼 = %li\n"
 
-#: aplay/aplay.c:2081
+#: aplay/aplay.c:2094
 #, c-format
 msgid "Status(R/W) (standalone avail=%li delay=%li):\n"
 msgstr ""
 
-#: aplay/aplay.c:2178
+#: aplay/aplay.c:2191
 #, c-format
 msgid "write error: %s"
 msgstr "쓰기 오류: %s"
 
-#: aplay/aplay.c:2226
+#: aplay/aplay.c:2239
 #, c-format
 msgid "writev error: %s"
 msgstr "쓰기 오류: %s"
 
-#: aplay/aplay.c:2272
+#: aplay/aplay.c:2285
 #, c-format
 msgid "read error: %s"
 msgstr "읽기 오류: %s"
 
-#: aplay/aplay.c:2319
+#: aplay/aplay.c:2332
 #, c-format
 msgid "readv error: %s"
 msgstr "읽기 오류: %s"
 
-#: aplay/aplay.c:2368
+#: aplay/aplay.c:2381
 msgid "can't allocate buffer for silence"
 msgstr "무음 버퍼를 할당할 수 없음"
 
-#: aplay/aplay.c:2377 aplay/aplay.c:2606 aplay/aplay.c:2611 aplay/aplay.c:2663
-#: aplay/aplay.c:2672 aplay/aplay.c:2679 aplay/aplay.c:2689 aplay/aplay.c:2695
-#: aplay/aplay.c:2767 aplay/aplay.c:2797 aplay/aplay.c:2811
+#: aplay/aplay.c:2390 aplay/aplay.c:2619 aplay/aplay.c:2624 aplay/aplay.c:2676
+#: aplay/aplay.c:2685 aplay/aplay.c:2692 aplay/aplay.c:2702 aplay/aplay.c:2708
+#: aplay/aplay.c:2773 aplay/aplay.c:2806 aplay/aplay.c:2820
 msgid "write error"
 msgstr "쓰기 오류"
 
-#: aplay/aplay.c:2390
+#: aplay/aplay.c:2403
 #, c-format
 msgid "voc_pcm_flush - silence error"
 msgstr "voc_pcm_flush - 무음 오류"
 
-#: aplay/aplay.c:2393
+#: aplay/aplay.c:2406
 msgid "voc_pcm_flush error"
 msgstr "voc_pcm_flush 오류"
 
-#: aplay/aplay.c:2418
+#: aplay/aplay.c:2431
 msgid "malloc error"
 msgstr "malloc 오류"
 
-#: aplay/aplay.c:2422
+#: aplay/aplay.c:2435
 #, c-format
 msgid "Playing Creative Labs Channel file '%s'...\n"
 msgstr "크리에이티브 랩스 채널 파일 '%s' 재생 중...\n"
 
-#: aplay/aplay.c:2491 aplay/aplay.c:2586
+#: aplay/aplay.c:2504 aplay/aplay.c:2599
 msgid "can't play packed .voc files"
 msgstr "압축된 .voc 파일은 재생 불가"
 
-#: aplay/aplay.c:2546
+#: aplay/aplay.c:2559
 #, c-format
 msgid "can't play loops; %s isn't seekable\n"
 msgstr "루프 재생 불가; %s 찾을 수 없음\n"
 
-#: aplay/aplay.c:2595
+#: aplay/aplay.c:2608
 #, c-format
 msgid "unknown blocktype %d. terminate."
 msgstr "알 수 없는 블록 유형 %d. 끝냅니다."
 
-#: aplay/aplay.c:2731
+#: aplay/aplay.c:2743
 #, c-format
 msgid "Wave doesn't support %s format..."
 msgstr "Wave는 %s 형식을 지원하지 않습니다..."
 
-#: aplay/aplay.c:2791
+#: aplay/aplay.c:2800
 #, c-format
 msgid "Sparc Audio doesn't support %s format..."
 msgstr "스파크 오디오는 %s 형식을 지원하지 않습니다..."
 
-#: aplay/aplay.c:2866
+#: aplay/aplay.c:2875
 msgid "Playing"
 msgstr "재생 중"
 
-#: aplay/aplay.c:2866
+#: aplay/aplay.c:2875
 msgid "Recording"
 msgstr "녹음 중"
 
-#: aplay/aplay.c:2870
+#: aplay/aplay.c:2879
 #, c-format
 msgid "Rate %d Hz, "
 msgstr "%d Hz 속도, "
 
-#: aplay/aplay.c:2872
+#: aplay/aplay.c:2881
 #, c-format
 msgid "Mono"
 msgstr "모노"
 
-#: aplay/aplay.c:2874
+#: aplay/aplay.c:2883
 #, c-format
 msgid "Stereo"
 msgstr "스테레오"
 
-#: aplay/aplay.c:2876
+#: aplay/aplay.c:2885
 #, c-format
 msgid "Channels %i"
 msgstr "채널 %i"
 
-#: aplay/aplay.c:3483
+#: aplay/aplay.c:3492
 #, fuzzy, c-format
 #| msgid "You need to specify %d files"
 msgid "You need to specify %u files"
 msgstr "%d 파일을 지정해야 함"
 
-#: aplay/aplay.c:3536
+#: aplay/aplay.c:3545
 #, c-format
 msgid "You need to specify %d files"
 msgstr "%d 파일을 지정해야 함"
 
-#: seq/aconnect/aconnect.c:56
+#: seq/aconnect/aconnect.c:63
 #, c-format
 msgid "aconnect - ALSA sequencer connection manager\n"
 msgstr "aconnect - ALSA 시퀀서 연결 매니저\n"
 
-#: seq/aconnect/aconnect.c:57
+#: seq/aconnect/aconnect.c:64
 #, c-format
 msgid "Copyright (C) 1999-2000 Takashi Iwai\n"
 msgstr "Copyright (C) 1999-2000 Takashi Iwai\n"
 
-#: seq/aconnect/aconnect.c:58
+#: seq/aconnect/aconnect.c:65
 #, c-format
 msgid "Usage:\n"
 msgstr "사용법:\n"
 
-#: seq/aconnect/aconnect.c:59
+#: seq/aconnect/aconnect.c:66
 #, c-format
 msgid " * Connection/disconnection between two ports\n"
 msgstr " * 두 포트 간에 연결/해제\n"
 
-#: seq/aconnect/aconnect.c:60
+#: seq/aconnect/aconnect.c:67
 #, c-format
 msgid "   aconnect [-options] sender receiver\n"
 msgstr "   aconnect [-options] sender receiver\n"
 
-#: seq/aconnect/aconnect.c:61
+#: seq/aconnect/aconnect.c:68
 #, c-format
 msgid "     sender, receiver = client:port pair\n"
 msgstr "     sender, receiver = 클라이언트:포트 연결\n"
 
-#: seq/aconnect/aconnect.c:62
+#: seq/aconnect/aconnect.c:69
 #, c-format
 msgid "     -d,--disconnect     disconnect\n"
 msgstr "     -d,--disconnect     연결 해제\n"
 
-#: seq/aconnect/aconnect.c:63
+#: seq/aconnect/aconnect.c:70
 #, c-format
 msgid "     -e,--exclusive      exclusive connection\n"
 msgstr "     -e,--exclusive      단독 연결\n"
 
-#: seq/aconnect/aconnect.c:64
+#: seq/aconnect/aconnect.c:71
 #, c-format
 msgid "     -r,--real #         convert real-time-stamp on queue\n"
 msgstr "     -r,--real #         대기열의 실시간 스탬프 변환\n"
 
-#: seq/aconnect/aconnect.c:65
+#: seq/aconnect/aconnect.c:72
 #, c-format
 msgid "     -t,--tick #         convert tick-time-stamp on queue\n"
 msgstr "     -t,--tick #         대기열의 틱-타임 스팸프 변환\n"
 
-#: seq/aconnect/aconnect.c:66
+#: seq/aconnect/aconnect.c:73
 #, c-format
 msgid " * List connected ports (no subscription action)\n"
 msgstr " * 연결된 포트 목록 (수신 행동 없음)\n"
 
-#: seq/aconnect/aconnect.c:67
+#: seq/aconnect/aconnect.c:74
 #, c-format
 msgid "   aconnect -i|-o [-options]\n"
 msgstr "   aconnect -i|-o [-options]\n"
 
-#: seq/aconnect/aconnect.c:68
+#: seq/aconnect/aconnect.c:75
 #, c-format
 msgid "     -i,--input          list input (readable) ports\n"
 msgstr "     -i,--input          인풋 (읽을 수 있는) 포트 목록\n"
 
-#: seq/aconnect/aconnect.c:69
+#: seq/aconnect/aconnect.c:76
 #, c-format
 msgid "     -o,--output         list output (writable) ports\n"
 msgstr "     -o,--output         아웃풋 (쓸 수 있는) 포트\n"
 
-#: seq/aconnect/aconnect.c:71
+#: seq/aconnect/aconnect.c:77
 #, fuzzy, c-format
 #| msgid "     -i,--input          list input (readable) ports\n"
 msgid "     -a,--all            show inactive ports, too\n"
 msgstr "     -i,--input          인풋 (읽을 수 있는) 포트 목록\n"
 
-#: seq/aconnect/aconnect.c:73
+#: seq/aconnect/aconnect.c:78
 #, c-format
 msgid "     -l,--list           list current connections of each port\n"
 msgstr "     -l,--list           각 포트에 현재 연결한 목록\n"
 
-#: seq/aconnect/aconnect.c:74
+#: seq/aconnect/aconnect.c:79
 #, c-format
 msgid " * Remove all exported connections\n"
 msgstr " * 내보낸 모든 연결 제거\n"
 
-#: seq/aconnect/aconnect.c:75
+#: seq/aconnect/aconnect.c:80
 #, c-format
 msgid "     -x, --removeall\n"
 msgstr "     -x, --removeall\n"
 
-#: seq/aconnect/aconnect.c:155
+#: seq/aconnect/aconnect.c:156
 msgid "Connecting To"
 msgstr "다음으로 연결 중"
 
-#: seq/aconnect/aconnect.c:156
+#: seq/aconnect/aconnect.c:157
 msgid "Connected From"
 msgstr "다음에 연결됨"
 
-#: seq/aconnect/aconnect.c:203
+#: seq/aconnect/aconnect.c:200
 #, c-format
 msgid "client %d: '%s' [type=%s"
 msgstr "클라이언트 %d: '%s' [유형=%s"
 
-#: seq/aconnect/aconnect.c:207
+#: seq/aconnect/aconnect.c:204
 msgid "user"
 msgstr "사용자"
 
-#: seq/aconnect/aconnect.c:207
+#: seq/aconnect/aconnect.c:204
 msgid "kernel"
 msgstr "커널"
 
-#: seq/aconnect/aconnect.c:385
+#: seq/aconnect/aconnect.c:367
 #, c-format
 msgid "can't open sequencer\n"
 msgstr "시퀀서를 열 수 없음\n"
 
-#: seq/aconnect/aconnect.c:413
+#: seq/aconnect/aconnect.c:399
 #, c-format
 msgid "can't get client id\n"
 msgstr "클라이언트 id를 가져올 수 없음\n"
 
-#: seq/aconnect/aconnect.c:420
+#: seq/aconnect/aconnect.c:406
 #, c-format
 msgid "can't set client info\n"
 msgstr "클라이언트 정보를 설정할 수 없음\n"
 
-#: seq/aconnect/aconnect.c:427
+#: seq/aconnect/aconnect.c:413
 #, c-format
 msgid "invalid sender address %s\n"
 msgstr "잘못된 전달 주소 %s\n"
 
-#: seq/aconnect/aconnect.c:432 seq/aseqnet/aseqnet.c:303
+#: seq/aconnect/aconnect.c:418 seq/aseqnet/aseqnet.c:303
 #, c-format
 msgid "invalid destination address %s\n"
 msgstr "잘못된 대상 주소 %s\n"
 
-#: seq/aconnect/aconnect.c:446
+#: seq/aconnect/aconnect.c:432
 #, c-format
 msgid "No subscription is found\n"
 msgstr "수신을 찾을 수 없음\n"
 
-#: seq/aconnect/aconnect.c:451
+#: seq/aconnect/aconnect.c:437
 #, c-format
 msgid "Disconnection failed (%s)\n"
 msgstr "연결 해제 실패 (%s)\n"
 
-#: seq/aconnect/aconnect.c:457
+#: seq/aconnect/aconnect.c:443
 #, c-format
 msgid "Connection is already subscribed\n"
 msgstr "이미 수신 중인 연결\n"
 
-#: seq/aconnect/aconnect.c:462
+#: seq/aconnect/aconnect.c:448
 #, c-format
 msgid "Connection failed (%s)\n"
 msgstr "연결 실패 (%s)\n"
@@ -1860,7 +1866,6 @@ msgid "Transfer failed: %s\n"
 msgstr "전송 실패함: %s\n"
 
 #: speaker-test/speaker-test.c:1290
-#, c-format
 msgid "Time per period = %lf\n"
 msgstr "주기별 시간 = %lf\n"
 
