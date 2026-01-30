@@ -1,10 +1,10 @@
 Author: Elimar Riesebieter <riesebie@lxtec.de>
 Description: Add Documentation key to systemd service files.
 
-Index: alsa-utils/alsactl/alsa-restore.service.in
+Index: alsa-utils/alsactl/conf/alsa-restore.service.in
 ===================================================================
---- alsa-utils.orig/alsactl/alsa-restore.service.in
-+++ alsa-utils/alsactl/alsa-restore.service.in
+--- alsa-utils.orig/alsactl/conf/alsa-restore.service.in
++++ alsa-utils/alsactl/conf/alsa-restore.service.in
 @@ -5,6 +5,7 @@
  
  [Unit]
@@ -13,10 +13,10 @@ Index: alsa-utils/alsactl/alsa-restore.service.in
  ConditionPathExists=!@daemonswitch@
  ConditionPathExistsGlob=/dev/snd/control*
  
-Index: alsa-utils/alsactl/alsa-state.service.in
+Index: alsa-utils/alsactl/conf/alsa-state.service.in
 ===================================================================
---- alsa-utils.orig/alsactl/alsa-state.service.in
-+++ alsa-utils/alsactl/alsa-state.service.in
+--- alsa-utils.orig/alsactl/conf/alsa-state.service.in
++++ alsa-utils/alsactl/conf/alsa-state.service.in
 @@ -5,6 +5,7 @@
  
  [Unit]

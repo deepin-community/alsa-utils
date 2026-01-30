@@ -8,13 +8,13 @@ Subject: [PATCH] Don't run both systemd services in paralell
     Don-t-run-both-systemd-services-in-paralell.patch. Thanks to Michael Biebl
     for the hint.
 ---
- alsactl/alsa-restore.service.in | 2 +-
+ alsactl/conf/alsa-restore.service.in | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-Index: alsa-utils/alsactl/alsa-restore.service.in
+Index: alsa-utils/alsactl/conf/alsa-restore.service.in
 ===================================================================
---- alsa-utils.orig/alsactl/alsa-restore.service.in
-+++ alsa-utils/alsactl/alsa-restore.service.in
+--- alsa-utils.orig/alsactl/conf/alsa-restore.service.in
++++ alsa-utils/alsactl/conf/alsa-restore.service.in
 @@ -8,6 +8,7 @@ Description=Save/Restore Sound Card Stat
  Documentation=man:alsactl(1)
  ConditionPathExists=!@daemonswitch@

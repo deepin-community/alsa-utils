@@ -1,15 +1,15 @@
-Description: drop .sh suffix from all alsa-info references and move to section 8.
+Description: drop .sh suffix from all alsa-info references
 Author: Jordi Mallach <jordi@debian.org>
 Bug-Debian: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=921595
 Upstreamed: no
 
-Index: alsa-utils/alsa-info/alsa-info.sh.1
+Index: alsa-utils/alsa-info/alsa-info.sh.8
 ===================================================================
---- alsa-utils.orig/alsa-info/alsa-info.sh.1
-+++ alsa-utils/alsa-info/alsa-info.sh.1
+--- alsa-utils.orig/alsa-info/alsa-info.sh.8
++++ alsa-utils/alsa-info/alsa-info.sh.8
 @@ -1,12 +1,12 @@
 -.TH ALSA-INFO.SH 1 "13 January 2016"
-+.TH ALSA-INFO.SH 8 "13 January 2016"
++.TH ALSA-INFO 8 "13 January 2016"
  .SH NAME
 -alsa-info.sh \- command\-line utility to gather information about
 +alsa-info \- command\-line utility to gather information about

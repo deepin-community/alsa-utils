@@ -5,7 +5,7 @@ Index: alsa-utils/alsactl/alsactl.c
 ===================================================================
 --- alsa-utils.orig/alsactl/alsactl.c
 +++ alsa-utils/alsactl/alsactl.c
-@@ -96,7 +96,7 @@ static struct arg args[] = {
+@@ -103,7 +103,7 @@ static struct arg args[] = {
  { FILEARG | 'e', "pid-file", "pathname for the process id (daemon mode)" },
  { HEADER, NULL, "Available init options:" },
  { ENVARG | 'E', "env", "set environment variable for init phase (NAME=VALUE)" },
@@ -31,7 +31,7 @@ Index: alsa-utils/alsactl/state.c
 ===================================================================
 --- alsa-utils.orig/alsactl/state.c
 +++ alsa-utils/alsactl/state.c
-@@ -1168,7 +1168,7 @@ static int restore_config_value(snd_ctl_
+@@ -1195,7 +1195,7 @@ static int restore_config_value(snd_ctl_
  	case SND_CTL_ELEM_TYPE_IEC958:
  		break;
  	default:

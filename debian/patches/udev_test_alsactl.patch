@@ -5,17 +5,18 @@ Description: Test for availability of alsactl before restoring.
 Forwarded: no
 Bug-Debian: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=713916
 
-Index: alsa-utils/alsactl/90-alsa-restore.rules.in
+Index: alsa-utils/alsactl/conf/90-alsa-restore.rules.in
 ===================================================================
---- alsa-utils.orig/alsactl/90-alsa-restore.rules.in
-+++ alsa-utils/alsactl/90-alsa-restore.rules.in
-@@ -2,7 +2,7 @@ ACTION=="add", SUBSYSTEM=="sound", KERNE
- GOTO="alsa_restore_end"
+--- alsa-utils.orig/alsactl/conf/90-alsa-restore.rules.in
++++ alsa-utils/alsactl/conf/90-alsa-restore.rules.in
+@@ -24,8 +24,8 @@ IMPORT{program}="/usr/bin/cat /run/udev/
+ ENV{ALSA_CARD_HDA_ANALOG}!="", ENV{ALSA_CARD_NUMBER}="$env{ALSA_CARD_HDA_ANALOG}"
  
- LABEL="alsa_restore_go"
--TEST!="@daemonswitch@", RUN+="@sbindir@/alsactl -E HOME=@alsactlhome@ -E XDG_RUNTIME_DIR=@alsactlruntime@ restore $devnode"
--TEST=="@daemonswitch@", RUN+="@sbindir@/alsactl -E HOME=@alsactlhome@ -E XDG_RUNTIME_DIR=@alsactlruntime@ nrestore $devnode"
-+TEST!="@daemonswitch@", TEST=="/usr/sbin/alsactl" RUN+="@sbindir@/alsactl -E HOME=@alsactlhome@ -E XDG_RUNTIME_DIR=@alsactlruntime@ restore $devnode"
-+TEST=="@daemonswitch@", TEST=="/usr/sbin/alsactl" RUN+="@sbindir@/alsactl -E HOME=@alsactlhome@ -E XDG_RUNTIME_DIR=@alsactlruntime@ nrestore $devnode"
+ LABEL="alsa_restore_std"
+-TEST!="@daemonswitch@", IMPORT{program}="@sbindir@/alsactl@args@ --export -E HOME=@alsactlhome@ -E XDG_RUNTIME_DIR=@alsactlruntime@ restore $env{ALSA_CARD_NUMBER}"
+-TEST=="@daemonswitch@", IMPORT{program}="@sbindir@/alsactl@args@ --export -E HOME=@alsactlhome@ -E XDG_RUNTIME_DIR=@alsactlruntime@ nrestore $env{ALSA_CARD_NUMBER}"
++TEST!="@daemonswitch@", TEST=="/usr/sbin/alsactl", IMPORT{program}="@sbindir@/alsactl@args@ --export -E HOME=@alsactlhome@ -E XDG_RUNTIME_DIR=@alsactlruntime@ restore $env{ALSA_CARD_NUMBER}"
++TEST=="@daemonswitch@", TEST=="/usr/sbin/alsactl", IMPORT{program}="@sbindir@/alsactl@args@ --export -E HOME=@alsactlhome@ -E XDG_RUNTIME_DIR=@alsactlruntime@ nrestore $env{ALSA_CARD_NUMBER}"
+ ENV{ALSA_CARD_STATE}=="waiting", ENV{SYSTEMD_WANTS}="alsa-card-wait@$env{ALSA_CARD_NUMBER}.service"
  
  LABEL="alsa_restore_end"

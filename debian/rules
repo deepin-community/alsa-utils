@@ -28,8 +28,7 @@ override_dh_auto_install:
 # Kill *.la files, and make sure we install everything else
 override_dh_install:
 	mv debian/tmp/usr/sbin/alsa-info.sh debian/tmp/usr/sbin/alsa-info
-	mkdir debian/tmp/usr/share/man/man8
-	mv debian/tmp/usr/share/man/man1/alsa-info.sh.1 debian/tmp/usr/share/man/man8/alsa-info.8
+	mv debian/tmp/usr/share/man/man8/alsa-info.sh.8 debian/tmp/usr/share/man/man8/alsa-info.8
 	mv debian/tmp/usr/sbin/alsabat-test.sh debian/tmp/usr/sbin/alsabat-test
 	find debian/tmp -name "*.la" -delete
 	dh_install -Xusr/share/man/fr
